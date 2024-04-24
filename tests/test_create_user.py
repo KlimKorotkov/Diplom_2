@@ -7,7 +7,8 @@ from Diplom_2.helpers import create_user_data
 
 
 class TestCreateUser:
-    def test_create_new_user_success(self, create_and_delete_user):
+    @allure.title('Успешная регистрация нового пользователя')
+    def test_create_new_user_success(self):
         payload = create_user_data()
         r = requests.post(APILinks.MAIN_URL + APILinks.REGISTER_URL, data=payload)
         assert r.status_code == 200 and r.json().get("success") is True
